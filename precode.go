@@ -60,7 +60,7 @@ func TestCodeIsOk(t *testing.T) {
 	body := responseRecorder.Body.String()
 
 	require.Equal(t, http.StatusOK, responseRecorder.Code)
-	assert.NotEqual(t, body, "")
+	assert.NotEmpty(t, body)
 }
 
 // Город, который передаётся в параметре city, не поддерживается. Сервис возвращает код ответа 400 и "ошибку wrong city value" в теле ответа
