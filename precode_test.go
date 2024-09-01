@@ -57,7 +57,7 @@ func TestCodeIsOk(t *testing.T) {
 	handler := http.HandlerFunc(mainHandle)
 	handler.ServeHTTP(responseRecorder, req)
 
-	body := responseRecorder.Body.String()
+	body := responseRecorder.Body
 
 	require.Equal(t, http.StatusOK, responseRecorder.Code)
 	assert.NotEmpty(t, body)
@@ -90,5 +90,5 @@ func TestMainHandlerWhenCountMoreThanTotal(t *testing.T) {
 	body := responseRecorder.Body.String()
 	list := strings.Split(body, ",")
 
-	assert.Equal(t, len(list), totalCount)
+	assert.Len(t, list, totalCount)
 }
